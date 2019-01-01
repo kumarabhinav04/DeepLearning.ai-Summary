@@ -1224,8 +1224,9 @@ Here is the course summary as given on the course [link](https://www.coursera.or
   - The NN here is Siamese means the top and bottom convs has the same parameters, only addition of sigmoid layer and the loss function.
 - The paper for this work: [[Taigman et. al., 2014. DeepFace closing the gap to human level performance]](https://www.cv-foundation.org/openaccess/content_cvpr_2014/html/Taigman_DeepFace_Closing_the_2014_CVPR_paper.html)
 - A good performance/deployment trick:
-  - Pre-compute all the images that you are using as a comparison to the vector f(x(j))
-  - When a new image that needs to be compared, get its vector f(x(i)) then put it with all the pre computed vectors and pass it to the sigmoid function.
+  - Pre-compute all the embeddings of images (from desnse feature vector) stored in database (that you are using as a comparison to the vector f(x(j)))
+  - When a new image that needs to be compared, get its embedding or vector f(x(i)) [this needs to be computed as it is new image] then put it with all the pre computed vectors and pass it to the sigmoid function.
+  - if you have a very large database of employees, you don't need to compute these encodings every single time for every employee database {use pre-computed embeddings, only perform computation for new images)
 - This version works quite as well as the triplet loss function.
 - Available implementations for face recognition using deep learning includes:
   - [Openface](https://cmusatyalab.github.io/openface/)
